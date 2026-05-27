@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitoring Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+    <div class="app-container">
+        <header>
+            <div class="logo">
+                🌿 Bueni
+            </div>
+            
+            <nav class="nav-pills">
+                <a href="#" class="active">Monitoring</a>
+                <a href="#">History Data</a>
+                <a href="#">Pengaturan Alat</a>
+            </nav>
+
+            <div class="header-actions">
+                <button>Status: Aktif</button>
+            </div>
+        </header>
+
+        <main class="dashboard-grid">
+            
+            <div class="hero-text">
+                <h1>Sistem Monitoring<br>Penetas Telur</h1>
+            </div>
+
+            <div class="card-time">
+                <div>
+                    <h2 id="jam-display">00:00</h2>
+                    <p id="tanggal-display">Memuat tanggal...</p>
+                </div>
+                <div style="text-align: right;">
+                    <span style="font-size: 24px;">⏱️</span>
+                </div>
+            </div>
+
+            <div class="card-sensor card-temp">
+                <div class="sensor-info">
+                    <h3>Suhu Inkubator</h3>
+                    <p>Pemantauan panas real-time</p>
+                    <button class="btn-action">Cek Detail</button>
+                </div>
+                <div class="sensor-value">
+                    <h1 id="temp-value">--°C</h1>
+                </div>
+            </div>
+
+            <div class="card-sensor card-power">
+                <div class="sensor-info">
+                    <h3>Konsumsi Daya</h3>
+                    <p>Penggunaan listrik alat pengering</p>
+                    <button class="btn-action dark">Grafik Daya →</button>
+                </div>
+                <div class="sensor-value">
+                    <h1 id="power-value">-- W</h1>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script type="module" src="script.js"></script>
+
+    <script>
+        function updateJam() {
+            const now = new Date();
+            
+            // Format Jam (HH:MM)
+            const jam = String(now.getHours()).padStart(2, '0');
+            const menit = String(now.getMinutes()).padStart(2, '0');
+            document.getElementById('jam-display').innerText = `${jam}:${menit}`;
+
+            // Format Tanggal (Contoh: 28 Mei 2026)
+            const opsiTanggal = { day: 'numeric', month: 'long', year: 'numeric' };
+            document.getElementById('tanggal-display').innerText = now.toLocaleDateString('id-ID', opsiTanggal);
+        }
+
+        // Jalankan jam setiap detik
+        setInterval(updateJam, 1000);
+        updateJam(); // Panggil sekali di awal agar tidak delay
+    </script>
+</body>
+</html>
