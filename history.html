@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History Data - Bueni</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css"> 
+    <style>
+        /* Tambahan desain khusus untuk tabel riwayat */
+        .history-container {
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            height: 100%;
+            overflow-y: auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            text-align: left;
+        }
+        th, td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        th {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+        .header-history {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+        <header>
+            <div class="logo">
+                <img src="assets/logo-bueni.png" alt="Peternakan Bueni" class="logo-img" style="height: 32px; width: auto;">
+                Peternakan Bueni
+            </div>
+            
+            <nav class="nav-pills">
+                <a href="index.html" >Monitoring</a> <a href="history.html" class="active" >History Data</a> <a href="profil.html">Profil</a>
+            </nav>
+
+            <div class="header-actions">
+                <button>Status: Aktif</button>
+            </div>
+        </header>
+
+        <main class="history-container">
+            <div class="header-history">
+                <div>
+                    <h2 style="color: var(--text-dark);">Riwayat Data Sensor</h2>
+                    <p style="color: var(--text-light);">Rekaman data suhu dan daya alat</p>
+                </div>
+                <button id="btn-download" class="btn-action dark">📥 Download CSV</button>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Waktu (Timestamp)</th>
+                        <th>Suhu (°C)</th>
+                        <th>Daya (W)</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body">
+                    <tr>
+                        <td colspan="3" style="text-align: center;">Memuat data dari Firebase...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </main>
+    </div>
+
+    <script type="module" src="history.js"></script>
+</body>
+</html>
